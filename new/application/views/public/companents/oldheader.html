@@ -1,0 +1,461 @@
+<!-- <header class="header <?=($sel == 'home') ? '' : 'page-header'?>">
+			<div class="container-fluid">
+				<div class="top-header" id="top-header">
+					<div class="logo-box ">
+						<a href="<?=site_url()?>">
+							<h1>UzAssets</h1>
+							<span>INVESTMENT COMPANY</span>
+						</a>
+					</div>
+				
+					<button class="button-scroll" type="button">
+						<i class="fa fa-wheelchair" aria-hidden="true"></i>
+						<div id="myDropdown" class="dropdown-content">
+							<div class="close-button">
+								<span><?=lang('acces_widget')?></span>
+								<i class="icon-cancel close"></i>
+							</div>
+							<a href="#" class="vi-open"><i class="fa fa-sun-o"></i>
+              <?=lang('contrast')?></a>
+							<a href="#" class="vi-open"><i class="fa fa-text-width"></i>
+              <?=lang('big_text')?></a>
+							<a href="#" class="btn-adaptive"><i class="fa fa-mobile"></i>
+              <?=lang('m_menu')?></a>
+							<a href="#" data-toggle="modal" data-target="#volume"><i class="fa fa-volume-up"></i>
+								<?=lang('speaker')?></a>
+						  </div>
+					</button>
+			
+					<div id="search">
+						<i class="icon-cancel close"></i>
+                        <?= form_open('search', array('method' => 'get')) ?>
+						<input type="search" class="vi-nopart" name="word" placeholder="<?=lang('search')?>" />
+                        </form>
+					</div>
+					<div class="header-right">
+						<ul class="header-ul">
+                            <? foreach($menu as $item): 
+                            if($item->category_id == 0){
+                            ?>
+							<li class="tab-<?=$item->id?>"><a href="#"><?=_t($item->title, LANG)?></a></li>
+                            <?php }?>
+                            <? endforeach; ?>						
+							<div class="box">
+                                  <? foreach($menu as $item): 
+                            if($item->category_id == 0){
+                                $sub = getOptionsData(array('group' => 'menu', 'category_id' => $item->id, 'status' => 'active', 'order' => 'ASC', 'status_lang_'.LANG => 'active'));
+                            ?>
+                            <?php if($sub){?>
+								<div class="tab<?=$item->id?> tab-main">
+									<ul>
+                                        <? foreach($sub as $item1): 
+                                             if($item1->options){
+                                                $link1 = site_url($item1->options);
+                                            }elseif($item1->option_2){
+                                                $link1 = $item1->option_2;
+                                                $target1 = 'target="_blank"';
+                                            }else {
+                                                $link1 = site_url('menu/'.$item1->alias);
+                                            } 
+                                        ?>
+										<li class="tap-<?=$item1->id?>"><a href="<?=$link1?>"><?=_t($item1->title, LANG)?></a></li>
+                                        <? endforeach ?>							
+									</ul>
+                                    <?$i = 1; foreach($sub as $item1): ?>
+									<div class="tap<?=$item1->id?> <?=($i == 1) ? 'active' : '' ?>">
+										<div class="tab-info">
+											<div class="tab-title">
+												<h2><?=_t($item1->category_title, LANG)?></h2>
+											</div>
+                                            <?php if($item1->url){?>
+											<div class="imgBox">
+												<img src="<?=base_url('uploads/'.$item1->group.'/'.$item1->url)?>" alt="">
+											</div>
+                                            <?php }?>
+										</div>
+									</div>
+                                    <?$i++; endforeach; ?>
+								</div>
+                                <?php }?>
+                            <?php }?>
+                            <? endforeach; ?>	
+							</div>
+						</ul>
+                         <?php  if (!$this->agent->is_robot()) { ?>
+                  <div class="mobile-menu">        
+                    <a href="#dl-menu" class="openMenu1"><i class="fa fa-bars"></i></a>
+                    <div id="dl-menu">
+                        <span class="language-mobile">
+                          <a href="<?= $link_ru ?>" class="item <?=(LANG == 'ru') ? 'active-lang' : ''?>">Ру</a>  
+                         <!-- <a href="<?= $link_uz ?>" class="item <?=(LANG == 'uz') ? 'active-lang' : ''?>">Ўзб</a>-->
+<a href="<?= $link_oz ?>" class="item <?=(LANG == 'oz') ? 'active-lang' : ''?>">O'z</a>
+<a href="<?= $link_en ?>" class="item <?=(LANG == 'en') ? 'active-lang' : ''?>">En</a>
+</span>
+<?= $main_menu_mobile ?>
+    </div>
+    </div>
+    <?php }  ?>
+    <div class="top-header-iconbox">
+        <div class="top-language">
+            <button type="button">
+									<span><?=$lang_title?></span>
+									<i class="fa fa-chevron-down"></i>
+								</button>
+            <div class="dropdown-menu-l">
+                <a class="dropdown-item-l" style="<?=(LANG == 'ru') ? 'display:none' : ''?>" href="<?=$link_ru?>">Ру</a>
+                <a class="dropdown-item-l" style="<?=(LANG == 'oz') ? 'display:none' : ''?>" href="<?=$link_oz?>">O'z</a>
+                <a class="dropdown-item-l" style="<?=(LANG == 'en') ? 'display:none' : ''?>" href="<?=$link_en?>">En</a>
+            </div>
+        </div>
+        <i class="icon-search search-button"></i>
+    </div>
+    </div>
+    </div>
+    </div>
+    <!-- use this for popup-->
+    <?php if($sel == 'home'){?>
+    <?php if(@$_COOKIE["agree"] != 'agree'){?>
+    <div id="myModal" class="modal fade popUp vi-nopart" role="dialog">
+        <div class="modal-dialog vi-nopart">
+            <div class="modal-content vi-nopart">
+                <div class="modal-header vi-nopart">
+                    <button type="button" class="close vi-nopart" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body text-center vi-nopart">
+                    <p class="vi-nopart">
+                        <?=lang('modal_text')?>
+                            <a href="<?=site_url('pages/maxfiylik-siyosati')?>">
+                                <?=lang('privacy_pol')?>
+                            </a>
+                    </p>
+                    <div class="popup-row vi-nopart">
+                        <!-- <a class="btn btn-danger" data-dismiss="modal" class="close" href="#"><?=lang('deny')?></a>-->
+                        <a class="btn btn-success approved vi-nopart" data-dismiss="modal" class="close" href="#">
+                            <?=lang('accept')?>
+                        </a>
+                    </div>
+                </div>
+                <div class="modal-footer vi-nopart">
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function() {
+            $('#myModal').modal('show');
+        });
+        $('.approved').click(function(e) {
+            e.preventDefault();
+            jQuery.ajax({
+                type: 'post',
+                url: site_url + '/u/action/adult',
+            });
+        });
+    </script>
+    <?php }?>
+
+    </header> -->
+    <?php /*
+<header class="header <?=($sel == 'home') ? '' : 'pages-header'?>">
+    <div class="header-main">
+        <div class="container">
+            <div class="header-top">
+                <div class="header-logo">
+                    <a href="<?=site_url()?>">
+                        <img src="<?=get_resource_url()?>images/logo.png" alt="">
+                        <span><?=lang('company_name')?> <br /><small><?=lang('site_test')?></small></span>
+                    </a>
+                </div>
+                <div class="header-settings">
+                    <div class="header-item header-mail">
+                        <a href="tel:+998 (71) 239-47-95"><i class="icons icon-telephone"></i>+998 (71) 239-47-95</a>
+                        <a href="tel:1003" style="margin-left: 30px;"><i class="icons icon-telephone"></i>1003</a>
+                    </div>
+                    <div class="header-item header-special">
+                        <a href="#" class="btn-adaptive"><i class="icons icon-mobile"></i></a>
+                        <a href="#" class="vi-open"><i class="icons icon-eyeglass"></i></a>
+                        <a href="https://mail.minzdrav.uz/owa" target="_blank"><i class="icons icon-user"></i></a>
+                    </div>
+                    <div class="header-item header-lang">
+                        <a href="<?= $link_ru ?>" <?=(LANG=='ru' ) ? 'class="active"' : ''?>>
+                            Рус
+                          </a>
+                        <a href="<?= $link_uz ?>" <?=(LANG=='uz' ) ? 'class="active"' : ''?>>
+                              Ўзб
+                          </a>
+                        <!--  
+                          <a class="dropdown-item" href="<?= $link_oz ?>">
+                              O'z
+                          </a>
+                          -->
+                        <!-- <a href="<?= $link_en ?>" <?=(LANG == 'en') ? 'class="active"' : ''?>>
+                              Eng
+                          </a>-->
+                    </div>
+                    <a href="" class="old_site" target="_blank" rel="nofollow">
+                        <?=lang('old_site')?>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="header-menu">
+        <div class="container">
+            <div class="header-menu__main">
+                <div class="menu">
+                    <a href="#" class="hamburger"><i class="icons icon-menu"></i></a>
+                    <div class="new-navbar desktop-menu navbar-expand-lg navbar-collapse">
+                        <?= $main_menu ?>
+                    </div>
+                    <?php  if (!$this->agent->is_robot()) { ?>
+                    <div class="mobile-menu">
+                        <a href="#dl-menu" class="openMenu1"><i class="icons icon-menu"></i></a>
+                        <div id="dl-menu">
+                            <span class="language-mobile">
+                          <a href="<?= $link_ru ?>" class="item <?=(LANG == 'ru') ? 'active-lang' : ''?>">Рус</a>  
+                          <a href="<?= $link_uz ?>" class="item <?=(LANG == 'uz') ? 'active-lang' : ''?>">Ўзб</a>
+                            <!--<a href="<?= $link_oz ?>" class="item <?=(LANG == 'oz') ? 'active-lang' : ''?>">O'z</a>-->
+                            <!-- <a href="<?= $link_en ?>" class="item <?=(LANG == 'en') ? 'active-lang' : ''?>">En</a> -->
+                        </span>
+                            <?= $main_menu_mobile ?>
+                        </div>
+                    </div>
+                    <?php }  ?>
+                </div>
+                <div class="mobile-phones">
+                    <a href="tel:+998 (71) 239-47-95"><i class="icons icon-telephone"></i>+998 (71) 239-47-95</a>
+                    <a href="tel:1003"><i class="icons icon-telephone"></i>1003</a>
+                </div>
+                <div class="header-search">
+                    <a href="#" class="header-search-button  search-toggle"><i class="icons icon-magnifying-glass"></i><?//=lang('search')?></a>
+                    <div class="thim-widget-courses-searching thim-widget-courses-searching-base">
+                        <div class="thim-course-search-overlay">
+                            <div class="courses-searching layout-overlay vi-nopart">
+                                <div class="search-popup-bg"></div>
+                                <?= form_open('search', array('method' => 'get')) ?>
+                                    <input type="text" value="" name="word" placeholder="<?= lang('search') ?>" class="thim-s form-control courses-search-input vi-nopart" autocomplete="off">
+                                    <button type="submit" class="vi-nopart"><i class="fa fa-search vi-nopart"></i></button>
+                                    <span class="widget-search-close vi-nopart"></span>
+                                    </form>
+                                    <ul class="courses-list-search list-unstyled search-visible"></ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </header>
+    */?>
+
+    <!-- old home -->
+    <!-- <div class="home-banner">
+            <? foreach($news_banner as $item): ?>
+            <?php $news_date = date_parse($item->created_on); ?>
+			<div class="banner-item bg-cover" data-background="<?= base_url('uploads/'.$item->group.'/'.$item->url)?>">
+				<div class="container">
+					<div class="overlay"></div>
+					<div class="container">
+						<div class="banner-content">
+							<div class="banner-date">
+								<span><?=$news_date['day']?> <?=getMonthName($item->created_on);?> <?=$news_date['year']?></span>
+							</div>
+							<div class="banner-title">
+								<h1><?=removeTags(_t($item->title, LANG),120)?></h1>
+							</div>
+							<a href="<?=site_url('news/'.$item->alias)?>" class="mybtn"><?=lang('read_more')?></a>
+						</div>
+					</div>
+				</div>
+			</div>
+            <? endforeach; ?>
+		</div>
+<section class="home-news padding20">
+			<div class="container">
+				<div class="title-more">
+					<div class="title">
+						<h3><?=lang('news')?></h3>
+					</div>
+					<a href="<?=site_url('news')?>" class="show_all_btn"><?=lang('all_news')?></a>
+				</div>
+				<div class="news-main">
+        <? foreach($news as $item): ?>
+                <?php $news_date = date_parse($item->created_on); ?>
+					<a href="<?=site_url('news/'.$item->alias)?>" class="news-item">
+						<div class="news-row">
+							<div class="news-col">
+								<div class="news-imgBx">
+									<div class="overlay"></div>
+									<img src="<?= base_url('uploads/'.$item->group.'/'.$item->url)?>" alt="">
+								</div>
+							</div>
+							<div class="news-col">
+								<div class="news-block">
+									<div class="news-content">
+										<div class="news-date">
+											<span><?=$news_date['day']?> <?=getMonthName($item->created_on);?> <?=$news_date['year']?></span>
+										</div>
+										<div class="news-title">
+											<h3><?=removeTags(_t($item->title, LANG))?></h3>
+										</div>
+										<div class="news-paragraph">
+											<p><?=removeTags(_t($item->short_content, LANG))?>
+											</p>
+										</div>
+										<div class="news-button">
+											<span class="mybtn2"><?=lang('read_more')?></span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</a>
+          <?php endforeach; ?>
+				</div>
+			</div>
+		</section>
+		<section class="home-portfolio padding120">
+			<div class="container">
+				<div class="title-more">
+					<div class="title">
+						<h3><?=lang('our_portfolio')?></h3>
+					</div>
+					<a href="<?=site_url('portfolio')?>" class="show_all_btn"><?=lang('all_portfolio')?></a>
+				</div>
+			</div>
+			<div class="our-portfolio">
+				<div class="container">
+					<div class="flipbox-main">
+						<div class="row">
+                            <? foreach($portfolio as $item): ?>
+							<div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
+								<a href="<?=site_url('portfolio/'.$item->alias)?>" class="flip-item">
+									<div class="front" style="background-image: url('<?= base_url('uploads/'.$item->group.'/'.$item->url)?>')">
+										<div class="inner">
+											<span><?=_t($item->title, LANG)?></span>
+										</div>
+									</div>
+									<div class="back">
+										<div class="inner">
+											<span><?=strip_tags(_t($item->short_content, LANG),'&nbsp;')?></span>
+											<small><?=$item->value_2?></small>
+											<p><?=$item->value_1?></p>
+										</div>
+									</div>
+								</a>
+							</div>
+                            <? endforeach; ?>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="home-graphs padding120">
+			<div class="container">
+				<div class="title">
+					<h3><?=lang('portfolio_per')?></h3>
+				</div>
+				<div class="portfolio_main">
+					<div class="owl-carousel owl-theme" id="graphs-carousel">
+                         <? foreach($portfolio as $item): 
+                            $portfolio_category = getOptionsData(array('group' => 'portfolio_category','category_id' => $item->id, 'media' => 'inactive', 'status' => 'active', 'order' => 'ASC'));
+                         ?>
+                         <?php if($portfolio_category){?>
+						<div class="item">
+							<div class="graphs-item">
+								<div class="portfolio_title">
+									<h2><?=_t($item->title, LANG)?></h2>
+								</div>
+								<div class="row">
+                                    <? foreach($portfolio_category as $item1): 
+                                        $portfolio_year = getOptionsData(array('group' => 'portfolio_year','category_id' => $item1->id, 'media' => 'inactive', 'status' => 'active', 'order' => 'ASC'));
+                                    ?>
+                                    <?php if($portfolio_year){?>
+									<div class="col-md-4">
+										<div class="portfolio-item">
+											<div class="chart<?=$item1->id?>"></div>
+											<span><?=_t($item1->title, LANG)?></span>
+										</div>                                     
+									</div>
+                                    <?php }?>                                    
+                                    <? endforeach; ?>
+								</div>
+							</div>
+						</div>
+                        <?php }?>
+                        <? endforeach; ?>
+					</div>
+				</div>
+            </div>
+            <script>
+                $(document).ready(function(){
+                    $('#graphs-carousel').owlCarousel({
+    items: 1,
+    loop: false,
+    nav: true,
+    dots: false,
+    lazyLoad:true,
+    margin: 30,
+    // animateIn: 'fadeIn',
+    // animateOut: 'fadeOut',
+    autoplay: false,
+    autoplayTimeout: 5000,
+    smartSpeed: 2500,
+    navText: ['<i class="icon-left-chevron fa-2x"></i>', '<i class="icon-right-chevron fa-2x"></i>'],
+  });
+  //Charts 
+	<? foreach($portfolio as $item): 
+$portfolio_category = getOptionsData(array('group' => 'portfolio_category','category_id' => $item->id, 'media' => 'inactive', 'status' => 'active', 'order' => 'ASC'));
+?>
+<?php if($portfolio_category){?>
+   <?$i = 1; foreach($portfolio_category as $item1): 
+        $portfolio_year = getOptionsData(array('group' => 'portfolio_year','category_id' => $item1->id, 'media' => 'inactive', 'status' => 'active', 'order' => 'ASC'));
+    ?>
+    <?php if($portfolio_year){?>                                        
+            <?php if($item1->value_1 == 'bar'){?>
+            var options<?=$item1->id?> = {
+            series: [{name: '<?=_t($item1->title, LANG)?>', // type: 'column', 
+               data: [<? foreach($portfolio_year as $item2):?><?=$item2->value_1?>,<? endforeach; ?>]
+            }],    
+            chart: {height: 350,toolbar: {show: false},type: 'bar',},
+            stroke: {width: [0, 4]},   
+            title: {/* text: ''*/},
+            dataLabels: {enabled: true,enabledOnSeries: [4]},    
+            legend:{show:false},
+            plotOptions: {
+            bar: {barHeight: '100%',distributed: true,}},
+            <?php if($i == 1){?>
+            colors:['#ababc4', '#8181a6', '#65658a', '#323252'],
+            <?php }else{?>
+            colors:['#f0cd71', '#f5ca56', '#e0b543', '#edad05'],
+            <?php }?>
+            xaxis: {categories: [<? foreach($portfolio_year as $item2):?>"<?=_t($item2->title, 'en')?>",<? endforeach; ?>]},
+          };
+          <?php }?>
+          <?php if($item1->value_1 == 'line'){?>
+            var options<?=$item1->id?> = {
+series: [{name: "<?=_t($item1->title, LANG)?>",data: [<? foreach($portfolio_year as $item2):?><?=$item2->value_1?>,<? endforeach; ?>]}],
+chart: {height: 350,type: 'line',toolbar: {show: false},zoom: {enabled: true}},
+dataLabels: {enabled: true},
+stroke: {curve: 'straight'},
+title: {
+// text: 'ROA',
+// align: 'left'
+},
+colors:['#2adbca', '#3b3b69', '#4c4c73', '#3b3b73'],      
+grid: {row: {colors: ['#f3f3f3', 'transparent'], opacity: 0.1},},
+labels: [<? foreach($portfolio_year as $item2):?>"<?=_t($item2->title, 'en')?>",<? endforeach; ?>],
+xaxis: {
+// type: 'datetime'
+},
+};
+          <?php }?>
+          var chart<?=$item1->id?> = new ApexCharts(document.querySelector(".chart<?=$item1->id?>"), options<?=$item1->id?>);
+          chart<?=$item1->id?>.render();      
+    <?php }?>                                    
+    <?$i++; endforeach; ?>
+	<?php }?>
+	<? endforeach; ?>
+                });
+            </script>
+		</section> -->

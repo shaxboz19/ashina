@@ -1,0 +1,76 @@
+$(document).ready(function(){
+	
+	$('.delete').click(function(){
+		if (!confirm("Вы уверены ?")) {
+	        return false;
+	    }
+	});
+	
+	$('.back').click(function(){
+		history.back();
+	});
+
+	$('tr.edit').click(function(){
+		location.href = $(this).attr('url');
+	});
+
+	//$(".fancybox").fancybox();
+
+	$(".datepicker").datepicker({
+		dateFormat: 'yy-mm-dd'
+	});
+
+	$(document).on('click', '.ajax_delete', function(){
+		if (!confirm("Вы уверены ?")) {
+	        return false;
+	    }
+	    else {
+	    	var data = $(this);
+
+	    	$.post( data.attr('href'), 
+	    		function (response)
+	    		{
+	    			if (response == 'deleted')
+	    			{
+	    				data.closest('li').remove();
+	    			}
+	    		}
+    		);
+    		return false;	    	
+	    }
+	});
+
+    $('.ajax_set_main').click(function () {
+		var data = $(this);
+        var info = $('.btn-info');
+		$.post( data.attr('href'), 
+    		function (response)
+    		{
+    			if (response == 'set_main')
+    			{
+                    info.removeClass('btn-info');
+                    info.addClass('btn-default');
+                    $(this).removeClass('btn-warning');
+    				data.addClass('btn-warning');
+    			}
+    		}
+		);
+		return false;
+	});
+
+	$('#title').syncTranslit({destination: 'alias'});
+});
+
+function openForm(url) 
+{ 
+	$.ajax({
+		type: "POST",
+		url: url,
+		success: function(content) 
+		{
+            $.fancybox({
+                content: content,
+            });
+		}
+	});	   
+}

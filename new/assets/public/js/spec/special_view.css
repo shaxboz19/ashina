@@ -1,0 +1,47 @@
+.gray-v iframe, .gray-v svg, .gray-v .flip-item .front, .gray-v .second_banner, .gray-v .banner-item, .gray-v .back-slider-image.back-slider-image-active, .gray-v .services::after, .gray-v .pages-banner, .gray-v .progress-bar-polls, .gray-v .contact_Pages .content::after, .gray-v .hamburger-menu::after, .gray-v .modal-body .map-google, .gray-v  .banner__main{filter: grayscale(100%);}
+.special-view .button-scroll.active{bottom: 70px;}
+#VisualHeader{line-height: normal !important;/*position: fixed;*/text-shadow: none;text-align: center;margin: 0 auto;z-index: 5;background-color: #f6f6f6;display: none;bottom: 0;right: 0;left: 0;}
+
+.special-view .links__main__item{border: 1px solid #fff !important;}
+.special-view .btn, .special-view .btn:focus{outline: none !important;box-shadow: none !important;}
+.special-view .courses-searching button{background: #000;}
+.special-view .mobile-btn{display: none;}
+
+.vi-color1 .header__main__vertual a{background: #f6f6f6;color: #000;}
+.vi-color1 .news-view__date a::before{background: #000;}
+.vi-color1 .new-navbar .nav-item .dropdown-menu, .vi-color1 .header__main__menu>ul>li.show, .vi-color1 .banner__main__button a, .vi-color1 .news__main__carousel__box__info__bottom__date, .vi-color1 .news_all_btn{background: #f6f6f6;}
+.vi-color1 .header__main__button i, .vi-color1 .activity__main__item i, .vi-color1 .map__main__right__contact ul li i, .vi-color1 .leadership-contacts p i, .vi-color1 .leader-btn i, .vi-color1 .news-view__print i, .vi-color1 .header-main__lang .dropdown-toggle i{color: #000;}
+.vi-color1 .banner__main::before{background: rgb(255 255 255 / 50%);}
+.vi-color1 .footer, .vi-color1 .regional__main__item__img__title{background: #fff;}
+.vi-color1 .news .owl-nav button, .vi-color1 .linksCarousel .owl-nav button, .vi-color1 .news-item-bottom span::after{background: #000 !important;}
+.vi-color1 .news__main__carousel__box::after, .vi-color1 .news__main__right__img::after{background: linear-gradient(to top, rgb(255 255 255 / 40%), rgb(255 255 255 / 10%));}
+.vi-color1 .map__main__right__contact{background: #fff;box-shadow: none;}
+.vi-color1 .pages-header {background: #fff;-webkit-box-shadow: 0 6px 3px -3px rgb(218 218 218 / 20%);box-shadow: 0 6px 3px -3px rgb(218 218 218 / 20%);}
+.vi-color1 .gallery-item__image::after{background: rgb(255 255 255 / 45%);}
+.vi-color1 #captcha_contacts_button, .vi-color1 .contact-button, .vi-color1 .send-form, .vi-color1 .form-check{background: #f6f6f6;}
+.vi-color1 .header-main__lang .dropdown-menu{box-shadow: 0 0 5px rgb(204 204 204 / 50%);}
+.vi-color1 .pagination ul li.active a{background: #f5f5f5;}
+
+.vi-color2 .header__main_logo__title>span{color: #fff;}
+.vi-color2 .header, .vi-color2 .blur-back, body.vi-color2, .vi-color2 .footer,.vi-color2 .news__main__carousel__box__info__bottom__date, .vi-color2 .regional__main__item__img__title, .vi-color2  .question .card{background: #000;}
+.vi-color2 .header__main__button i, .vi-color2 .activity__main__item i, .vi-color2 .map__main__right__contact ul li i, .vi-color2 .leadership-contacts p i, .vi-color2 .leader-btn i, .vi-color2 .news-view__print i, .vi-color2 .header-main__lang .dropdown-toggle i, .vi-color2 .hamburger-menu__close i{color: #fff;}
+.vi-color2 .header__main__vertual a{background: #272727;}
+.vi-color2 .news .owl-nav button, .vi-color2 .linksCarousel .owl-nav button{background: #000 !important;}
+.vi-color2 .regional .title ul.nav-tabs li.nav-item a.nav-link.active{border-bottom: 1px solid;}
+.vi-color2 .activity__main, .vi-color2 .map__main__right__contact, .vi-color2 .map__main__right__count, .vi-color2 .links__main__item, .vi-color2 .new-navbar .nav-item .dropdown-menu, .vi-color2 .header__main__menu>ul>li.show, .vi-color2 .leadership-item, .vi-color2 .sidebar, .vi-color2 .content, .vi-color2 .regional__main__item__info, .vi-color2 .news-item, .vi-color2 .pagination ul li.active a, .vi-color2 .news-sidebar, .vi-color2 .news-view__main, .vi-color2 .header-main__lang .dropdown-menu{background: #080808;box-shadow: none;}
+.vi-color2 .news-view__date a::before, .vi-color2 .accordion>.card>.card-header::after{background: #fff;}
+.vi-color2 .contacts-form input, .vi-color2 .contacts-form textarea{color:#fff !important;}
+.vi-color2 #captcha_contacts_button, .vi-color2 .contact-button, .vi-color2 .send-form, .vi-color2 .form-check, .vi-color2 .news_all_btn{background: #000;}
+.vi-color2 .virtual .nav-item a{background: none !important;}
+
+.vi-color3 .header__main_logo__title>span{color: #fff;}
+.vi-color3 .header, .vi-color3 .blur-back, body.vi-color3, .vi-color3 .footer,.vi-color3 .news__main__carousel__box__info__bottom__date, .vi-color3 .regional__main__item__img__title, .vi-color3  .question .card{background: #000;}
+.vi-color3 .header__main__button i, .vi-color3 .activity__main__item i, .vi-color3 .map__main__right__contact ul li i, .vi-color3 .leadership-contacts p i, .vi-color3 .leader-btn i, .vi-color3 .news-view__print i, .vi-color3 .header-main__lang .dropdown-toggle i, .vi-color3 .hamburger-menu__close i{color: #fff;}
+.vi-color3 .header__main__vertual a{background: #272727;}
+.vi-color3 .news .owl-nav button, .vi-color3 .linksCarousel .owl-nav button{background: #000 !important;}
+.vi-color3 .regional .title ul.nav-tabs li.nav-item a.nav-link.active{border-bottom: 1px solid;}
+.vi-color3 .activity__main, .vi-color3 .map__main__right__contact, .vi-color3 .map__main__right__count, .vi-color3 .links__main__item, .vi-color3 .new-navbar .nav-item .dropdown-menu, .vi-color3 .header__main__menu>ul>li.show, .vi-color3 .leadership-item, .vi-color3 .sidebar, .vi-color3 .content, .vi-color3 .regional__main__item__info, .vi-color3 .news-item, .vi-color3 .pagination ul li.active a, .vi-color3 .news-sidebar, .vi-color3 .news-view__main, .vi-color3 .header-main__lang .dropdown-menu{background: #080808;box-shadow: none;}
+.vi-color3 .news-view__date a::before, .vi-color3 .accordion>.card>.card-header::after{background: #fff;}
+.vi-color3 .contacts-form input, .vi-color3 .contacts-form textarea{color:#fff !important;}
+.vi-color3 #captcha_contacts_button, .vi-color3 .contact-button, .vi-color3 .send-form, .vi-color3 .form-check, .vi-color3 .news_all_btn{background: #000;}
+.vi-color3 .virtual .nav-item a{background: none !important;}
