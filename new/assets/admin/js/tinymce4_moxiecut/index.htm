@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="windows-1251" />
+        <title>TinyMCE 4.0b1 + MoxieManager</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <script type="text/javascript" src="tinymce/all.min.js"></script>
+		<script type="text/javascript" src="tinymce/plugins/moxiecut/plugin.min.js"></script>
+        <link type="text/css" rel="stylesheet" href="tinymce/all.min.css" />
+    </head>
+    <body style="margin-top:5%;margin-left:10%;margin-right:10%">
+<script type="text/javascript" src="tinymce/tinymce.js"></script>
+<script type="text/javascript">
+tinymce.PluginManager.load('moxiecut', 'tinymce/plugins/moxiecut/plugin.min.js');
+tinymce.init({
+    selector: ".moxiecut",
+    theme: "modern",
+    plugins: [
+	    "advlist autolink lists link image charmap print preview anchor",
+		"searchreplace visualblocks code fullscreen",
+		"insertdatetime media table contextmenu paste moxiecut"
+	],
+	toolbar: "undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link insertfile image media",
+	autosave_ask_before_unload: false,
+    height: 500,
+    relative_urls: false
+});
+</script>
+    <h1><a style="text-decoration:underline;" href="http://tracker.starlink.ru/forums.php?action=viewtopic&topicid=76230">TinyMCE 4.0b1 + MoxieManager</a></h1>
+    <form method="post" action="somepage">
+        <textarea class="moxiecut" name="content"></textarea>
+    </form>
+    </body>
+</html>
